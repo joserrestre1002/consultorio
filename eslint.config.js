@@ -1,15 +1,15 @@
-import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
-import { defineConfig, globalIgnores } from "eslint/config";
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  globalIgnores(['dist']),
 
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
 
     extends: [
       js.configs.recommended,
@@ -23,17 +23,17 @@ export default defineConfig([
     },
 
     rules: {
-      "no-console": "warn",
+      '@typescript-eslint/no-explicit-any': 'error',
 
-      "@typescript-eslint/no-explicit-any": "error",
-
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
         {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
         },
       ],
+
+      'no-console': 'warn',
     },
   },
-]);
+])
