@@ -1,5 +1,5 @@
 import { useAuth } from '@/features/auth/hooks/useAuth'
-import { ROUTES } from '@/router/routes'
+import { ROUTES } from '@/app/router/routes'
 import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {

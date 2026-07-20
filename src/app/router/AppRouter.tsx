@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LoginPage from '@/features/auth/pages/Login/LoginPage'
-import DashboardPage from '@/features/auth/pages/Dashboard/DashboardPage'
+import DashboardPage from '@/features/dashboard/pages/DashboardPage'
 import NotFoundPage from '@/features/auth/pages/NotFound/NotFoundPage'
-
-import MainLayout from '../layouts/MainLayout'
+import MainLayout from '@/layouts/MainLayout'
 import PublicRoute from './PublicRoute'
 import ProtectedRoute from './ProtectedRoute'
 import { ROUTES } from './routes'
