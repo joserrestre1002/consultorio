@@ -6,26 +6,41 @@ import MainLayout from '@/layouts/MainLayout'
 import PublicRoute from './PublicRoute'
 import ProtectedRoute from './ProtectedRoute'
 import { ROUTES } from './routes'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-export const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {/* Rutas públicas */}
-        <Route element={<PublicRoute />}>
-          <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-        </Route>
+const router = createBrowserRouter([
+  {
+    element: <PublicRoute />,
+    children: [
+      {
+        path: ROUTES.LOGIN,
+        element: <LoginPage />,
+      },
+    ],
+  },
 
-        {/* Rutas privadas */}
-        <Route element={<ProtectedRoute />}>
-          <Route element={<MainLayout />}>
-            <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
-          </Route>
-        </Route>
+  {
+    element: <ProtectedRoute />,
+    children: [
+      {
+        element: <MainLayout />,
+        children: [
+          {
+            path: ROUTES.DASHBOARD,
+            element: <DashboardPage />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
+])
 
-        {/* Página no encontrada */}
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  )
+const AppRouter = () => {
+  return <RouterProvider router={router} />
 }
+
+export default AppRouter
